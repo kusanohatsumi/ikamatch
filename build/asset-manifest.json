@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ecc/hkusano/sample/build/static/css/main.5a61d259.css",
+    "main.js": "/ecc/hkusano/sample/build/static/js/main.9f3e2e94.js",
+    "index.html": "/ecc/hkusano/sample/build/index.html",
+    "main.5a61d259.css.map": "/ecc/hkusano/sample/build/static/css/main.5a61d259.css.map",
+    "main.9f3e2e94.js.map": "/ecc/hkusano/sample/build/static/js/main.9f3e2e94.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5a61d259.css",
+    "static/js/main.9f3e2e94.js"
+  ]
+}
