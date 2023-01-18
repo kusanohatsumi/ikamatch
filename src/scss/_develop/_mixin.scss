@@ -1,0 +1,15 @@
+@mixin recruitingBtn {
+    width:460px;
+    height:145px;
+}
+
+@mixin item {
+    width:1000px;
+    height:332px;
+}
+
+@mixin new {
+    width:233px;
+    height:233px;
+    border:solid 1px #333;
+}

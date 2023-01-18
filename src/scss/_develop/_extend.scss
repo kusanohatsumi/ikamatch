@@ -1,0 +1,18 @@
+@use "./vars" as v;
+
+.ttlStyle{
+    font-size: 2rem;
+    color: #333333;
+    // font-family: 'Kiwi Maru', serif;
+}
+
+.textBase{
+    font-size: 1.2rem;
+    color: v.$text;
+}
+
+.recruitingBtn{
+    font-size: 1.4rem;
+    color:#fff;
+}
+

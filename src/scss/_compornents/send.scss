@@ -1,0 +1,31 @@
+
+.send{
+    text-align: center;
+    h2{
+        font-size: 32px;
+        font-weight: bold;
+        margin-bottom: 95px;
+    }
+    p{
+        font-size: 24px;
+        margin-bottom: 95px;
+    }
+    button{
+        display: block;
+        width: 204px;
+        height:62px ;
+        background-color:#2ACCC8 ;
+        color: #fff;
+        border-radius: 8px;
+        font-size: 20px;
+        margin: 0 auto;
+        margin-top: 88px;
+        margin-bottom: 65px;
+    }
+    a{
+        text-decoration: none;
+        button:hover{
+        background-color: #FB6D10;
+    }
+    }
+}

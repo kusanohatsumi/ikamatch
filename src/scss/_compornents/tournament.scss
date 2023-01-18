@@ -1,0 +1,20 @@
+@use "asset" as a;
+
+.tournament{
+    width:48%;
+    display: inline-block;
+    background-color: a.$base;
+    border-radius: 10px;
+    time{
+        @extend .textBase;
+        color: a.$base;
+    }
+    figure{
+        width:100%;
+        height:330px;
+    }
+    section{
+        width:100%;
+        padding: 20px;
+    }
+}

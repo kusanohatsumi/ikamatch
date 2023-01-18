@@ -1,0 +1,119 @@
+@use "../_develop/asset.scss" as a;
+
+.detailItem{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width:100%;
+    height: 270px;
+    padding: 24px;
+    background-color: a.$base;
+    margin-bottom: 32px;
+    border-radius: 16px;
+    cursor: pointer;
+    border: solid 2px peru;
+
+    figure{
+        width:400px;
+        height:200px;
+        background-color: #999;
+    }
+    .text{
+        
+        padding-right: 16px;
+        width:56%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .icon{
+            display: flex;
+            align-items: center;
+            figure{
+                width:32px;
+                height:32px;
+                img{
+                    border-radius: 50%;
+
+                }
+            }
+            .name, .friend-cord{
+                display: inline-block;
+                padding: 0 8px;
+                text-align: center;
+            }
+            .friend-cord{
+                color:gray;
+            }
+        }
+        .comment{
+            height: 80px;
+            overflow: hidden;
+        }
+    }
+    .Img{
+        width:42%;
+
+    }
+}
+
+img{
+    display: block;
+    background-color: #999;
+}
+
+
+
+.open{
+    align-items: flex-start;
+    flex-direction: column-reverse;
+    padding-top: 32px;
+    height:100%;
+    figure{
+        width: 80%;
+        height: 400px;
+        margin: 0 auto;
+    }
+    .text{
+        width:100%;
+        height:200px;
+        margin: 24px 0 12px;
+        .icon{
+            figure{
+                margin: 0;
+            }
+        }
+        .comment{
+            height: auto;
+            margin: 20px 0;
+            overflow: visible;
+        }
+    }
+
+}
+
+.AppBtn{
+    width:112px;
+    height:40px;
+    border-radius: 50px;
+    background-color: a.$main;
+    display: none;
+    button{
+        width:100%;
+        height:100%;
+        color: #fff;
+    }
+}
+.add{
+    width:112px;
+    height:40px;
+    border-radius: 50px;
+    background-color: a.$main;
+    display: block;
+    button{
+        width:100%;
+        height:100%;
+        color: #fff;
+    }
+}
+
