@@ -9,7 +9,6 @@ export const Detail = () => {
     
     function openDetail(){
       const detailItem = doc.querySelectorAll(".detailItem");
-      const detailTxt = doc.getElementById("detailText");
       const AppBtn = doc.querySelector(".AppBtn");
 
       console.log(detailItem);

@@ -7,20 +7,20 @@ import "../scss/_compornents/main.scss";
 
 
 export const Main = () => {
-  return (
+    return (
         <main>
             <div className='firstView'>
                 <div className='firstView__item'>
-                    <img src={`${process.env.PUBLIC_URL}/img/logo.svg`} />
+                    <img src={`${process.env.PUBLIC_URL}/img/logo.svg`} alt="サムネイル" />
                 </div>
                 <div className='firstView__item'>
                     <figure></figure>
                 </div>
             </div>
-                <div className='container'>
+                <div className='container main'>
                     <Search1 />
                     <Search2 />
                 </div>
         </main>
-  )
+    )
 }

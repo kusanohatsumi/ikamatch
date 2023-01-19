@@ -1,38 +1,39 @@
 import React from 'react'
 import "../scss/_compornents/form.scss";
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
+// ---
+import { useForm } from 'react-hook-form';
+// ---
 
-
-
+// 
 export const Form = () => {
+    // ---
+    const {register,handleSubmit} = useForm();
+    const onSubmit = (data) => {
+        console.log(data)
+    };
+    // --
 
-    // const selectCharacter = document.getElementById("selectCharacter");
-    // const selectImg = document.getElementById("selectImg");
-
+    // ---
     const [area, setArea] = useState("");
-
-    // function setImag(){
-    //     let imgFileName = selectCharacter.value;
-    //     console.log(imgFileName);
-    //     // selectImg.src = `${process.env.PUBLIC_URL}/img/stage/${imgFileName}`;
-    // }
 
     return (
             <div className='container'>
-                {/* <h2>募集をする</h2> */}
-                <form className='form'> 
+                <form className='form' onSubmit={handleSubmit(onSubmit)}> 
                     <div className="form__thum">
                         <img id='selectImg' src={`${process.env.PUBLIC_URL}/img/stage/${area}`} alt='画像を選択してください' />
                     </div>
                     <div className="form__item">
-                        <label for="title">タイトル</label>
-                        <input type="text" placeholder="ここにタイトルを入力" />
+                        <label htmlFor="title">タイトル</label>
+                        <input
+                            id='ttl'
+                            {...register("ttl")}
+                            placeholder="ここにタイトルを入力" />
                     </div>
 
                     <div className="form__item">
-                        <label for="area">対戦エリア</label>
-                        <select id='selectCharacter' onChange={(e)=>setArea(e.target.value)}  className="mode__select" name="mode" style={{cursor:"pointer",}}> 
+                        <label htmlFor='selectCharacter' for="area">対戦エリア</label>
+                        <select  id='selectCharacter' {...register("selectCharacter")} onChange={(e)=>setArea(e.target.value)}  className="mode__select" name="mode" style={{cursor:"pointer",}}> 
                             <option selected disabled>対戦エリアを選択する</option>
                             <option value="yunohana.jpg">ユノハナ大渓谷</option>
                             <option value="gonnzui.jpg">ゴンズイ地区</option>
@@ -52,8 +53,8 @@ export const Form = () => {
                     
 
                     <div className="form__item">
-                        <label for="mode">対戦モード</label>
-                        <select className="mode__select" name="mode" 
+                        <label htmlFor="mode">対戦モード</label>
+                        <select id='mode' {...register("mode")} className="mode__select" name="mode" 
                             style={{
                                 // background: "url(img/icon_down.svg)",
                                 // backgroundRepeat:"no-repeat",
@@ -71,22 +72,23 @@ export const Form = () => {
                     </div>
 
                     <div className="form__item">
-                        <label for="time">開始予定日</label>
-                        <input type="dateTime-local" placeholder="開始予定時刻を入力"/>
+                        <label htmlFor="time">開始予定日</label>
+                        <input id='time' {...register("time")} type="dateTime-local" placeholder="開始予定時刻を入力"/>
                     </div>
 
                     <div className="form__item">
-                        <label for="xp">xp </label>
-                        <input type="text" placeholder="自チームの平均xpを入力" />
+                        <label htmlFor="xp">xp </label>
+                        <input id='xp' {...register("xp")} type="text" placeholder="自チームの平均xpを入力" />
                     </div>
 
                     <div className="form__item">
-                        <label for="other">その他</label>
-                        <textarea name="other" cols="30" rows="10" wrap="hard"></textarea>
+                        <label htmlFor="other">その他</label>
+                        <textarea id='other' {...register("other")} name="other" cols="30" rows="10" wrap="hard"></textarea>
                     </div>
 
                     <div className='btn'>
-                        <button><Link to="/send">募集を投稿する</Link></button>
+                        <button>募集を投稿する</button>
+                        {/* <button><Link to="/send">募集を投稿する</Link></button> */}
                     </div>
                 </form>
             </div>
