@@ -2,6 +2,9 @@ import React from 'react'
 import "../scss/_compornents/login.scss"
 
 import { Link } from 'react-router-dom'
+import { auth, provider } from './Firebase'
+import { signInWithPopup } from 'firebase/auth'
+
 
 
 export const Login = () => {
@@ -15,7 +18,7 @@ export const Login = () => {
             </div>
             <div className="Login__item">
                 <label for="title">パスワード</label>
-                <input type="text" placeholder="パスワードを入力してください" />
+                <input type="password" placeholder="パスワードを入力してください" />
             </div>
             <div className="Login__help">
                 <Link to="/passHelp">パスワードを忘れた場合はこちら</Link>
@@ -30,8 +33,8 @@ export const Login = () => {
             </div>
 
             <div className="Login__btn--otherAccount">
-                <button className='login__btn'>Googleでログイン</button>
-                <button className='login__btn'>Yahooでログイン</button>
+                <SignInWdthGoogle />
+                <button className='login__btn'>Twitterでログイン</button>
                 <button className='login__btn'>Facebookでログイン</button>
             </div>
 
@@ -40,3 +43,27 @@ export const Login = () => {
     </div>
   )
 }
+
+
+// ----
+
+function SignInWdthGoogle(){
+    const signinWidthGoogle = ()=> {
+        signInWithPopup(auth,provider);
+    }
+    return(
+        <button className='login__btn'  type='button' onClick={signinWidthGoogle}>
+            Googleでログイン
+        </button>
+    );
+    
+}
+
+function UserInfo(){
+    return(
+        <figure>
+            <img src={auth.currentUser.photoURL} referrerPolicy="no-referrer" alt="アイコン" />
+        </figure>
+    );
+}
+export default UserInfo;

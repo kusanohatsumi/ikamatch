@@ -1,21 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 
 
 export const New = () => {
+
     return (
         <div>
-            <h2>新規登録</h2>
 
             <div className="container">
             <form className='Login'>
                 <div className="Login__item">
-                    <label for="title">プレイヤー名</label>
-                    <input type="text" placeholder="プレイヤー名を入力してください" />
+                    <label for="name">プレイヤー名</label>
+                    <input name='name' type="text" placeholder="プレイヤー名を入力してください" />
                 </div>
                 <div className="Login__item">
-                    <label for="title">ID</label>
-                    <input type="text" placeholder="IDを入力してください" />
+                    <label for="id">ID</label>
+                    <input name='id' type="text" placeholder="IDを入力してください" />
                     <ul className='attention'>
                         <li>16文字以内で入力してください</li>
                         <li>住所、電話番号などの個人情報は入力しないで下さい</li>
@@ -23,8 +24,8 @@ export const New = () => {
                     </ul>
                 </div>
                 <div className="Login__item">
-                    <label for="title">パスワード</label>
-                    <input type="text" placeholder="パスワードを入力してください" />
+                    <label for="password">パスワード</label>
+                    <input name='password' type="password" placeholder="パスワードを入力してください" />
                 </div>
 
 

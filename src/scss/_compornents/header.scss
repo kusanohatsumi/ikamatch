@@ -40,7 +40,7 @@
         height:100%;
         flex: .5;
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         justify-content: space-between;
         li{
           @extend .textBase;
@@ -80,34 +80,23 @@
         }
 
         .login{
+          img{
+            border-radius: 50%;
+            width:50px;
+            height:50px;
+          }
           a{
             color:a.$sub;
           }
           &::after{
             content: "";
-            display: flex;
-            width:100%;
-            height:1px;
-            transform: translateY(5px);
-            opacity: 0;
-            background-color: a.$sub;
-            position: absolute;
-            bottom:2px;
-            transition: .3s ease;
+            display: none;
           }
           
           &:hover{
             &::after{
               content: "";
-              display: flex;
-              width:100%;
-              height:1px;
-              transform: translateY(1);
-              opacity: 1;
-              background-color: a.$sub;
-              position: absolute;
-              bottom:2px;
-              transition: .3s ease;
+              display: none;
             }
           }
         }
