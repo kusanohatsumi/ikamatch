@@ -11,14 +11,13 @@ export const Header = () => {
             <p>~簡単に対戦相手や大会を探せる~</p>
         </div>
         <nav>
-            <ul className="nav"> 
+            <ul> 
                 <li><Link to="/">募集相手を探す</Link></li>
                 <li><Link to="/req">募集中の大会を探す</Link></li>
                 <li><Link to="/recruitform">相手を募集する</Link></li>
-                <li><Link to="/login">アカウント作成/ログイン</Link></li>
+                <li className='login'><Link to="/login">アカウント作成/ログイン</Link></li>
             </ul>
         </nav>
-        <div className="recruiting">テキスト</div>
     </header>
   )
 }
