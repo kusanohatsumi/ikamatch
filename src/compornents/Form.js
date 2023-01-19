@@ -36,7 +36,7 @@ export const Form = () => {
                             <option selected disabled>対戦エリアを選択する</option>
                             <option value="yunohana.jpg">ユノハナ大渓谷</option>
                             <option value="gonnzui.jpg">ゴンズイ地区</option>
-                            <option value="yagara.js">ヤガラ市場</option>
+                            <option value="yagara.jpg">ヤガラ市場</option>
                             <option value="mategai.jpg">マテガイ放水路</option>
                             <option value="namerou.jpg">ナメロウ金属</option>
                             <option value="masaba.jpg">マサバ海峡大橋</option>
