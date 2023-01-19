@@ -10,12 +10,13 @@
     background-color: a.$base;
     margin-bottom: 32px;
     border-radius: 16px;
-    cursor: pointer;
 
     figure{
         width:400px;
         height:200px;
-        background-color: #999;
+        img{
+            object-fit: cover;
+        }
     }
     .text{
         
@@ -31,9 +32,8 @@
             figure{
                 width:32px;
                 height:32px;
-                img{
-                    border-radius: 50%;
-                }
+                background-color: #999;
+                border-radius: 50%;
             }
             .name, .friend-cord{
                 display: inline-block;
