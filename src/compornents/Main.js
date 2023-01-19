@@ -11,12 +11,10 @@ export const Main = () => {
         <main>
             <div className='firstView'>
                 <div className='firstView__item'>
-                    <h1 className='logo'>Logo</h1>
-                    <p>text</p>
+                    <img src={`${process.env.PUBLIC_URL}/img/logo.svg`} />
                 </div>
                 <div className='firstView__item'>
                     <figure></figure>
-                    <p>サービスのモックアップと説明文</p>
                 </div>
             </div>
                 <div className='container'>
