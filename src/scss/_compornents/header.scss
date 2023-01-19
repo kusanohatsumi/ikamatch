@@ -1,7 +1,7 @@
 @use "../_develop/asset.scss" as a;
 
 .header{
-  background-color: a.$back;
+  background-color: a.$base;
   max-width:1000px;
   width:100%;
   min-width:500px;

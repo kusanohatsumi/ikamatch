@@ -20,7 +20,7 @@ export const Form = () => {
 
     return (
             <div className='container'>
-                <h2>募集をする</h2>
+                {/* <h2>募集をする</h2> */}
                 <form className='form'> 
                     <div className="form__thum">
                         <img id='selectImg' src={`${process.env.PUBLIC_URL}/img/stage/${area}`} alt='画像を選択してください' />
