@@ -24,8 +24,8 @@ export const Login = () => {
                 <Link to="/passHelp">パスワードを忘れた場合はこちら</Link>
             </div>
 
-            <button className='Login__btn'>ログイン</button>
-            <button className='Login__btn Login__btn--new'>
+            <button type='button' className='Login__btn'>ログイン</button>
+            <button type='button' className='Login__btn Login__btn--new'>
                 <Link to="/new">新規作成</Link>
             </button>
             <div className='or'>

@@ -17,7 +17,7 @@ export const Header = () => {
         </div>
         <nav>
             <ul> 
-                <li><Link to="/">募集相手を探す</Link></li>
+                <li><Link to="/">募集を探す</Link></li>
                 <li><Link to="/req">募集中の大会を探す</Link></li>
                 <li><Link to="/recruitform">相手を募集する</Link></li>
                 <li className='login'>
