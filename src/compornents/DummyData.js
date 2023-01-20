@@ -11,30 +11,5 @@ export const PostsData = [
         rea:"gonnzui.jpg",
     }
     ,
-    {
-        id:"",
-        icon: "icon.svg" ,
-        nickname : "和弘",
-        code: "3754-8546-4857",
-        title : "アサリ練習の相手募集",
-        text : "ガチアサリが死ぬほど苦手です。克服したいのでガチアサリ練習に付き合ってくださる方を募集してます。",
-        mode:"asari",
-        xp:"1600",
-        rea:"masaba.jpg",
-    }
-    ,
-    {
-        id:"",
-        icon: "icon.svg" ,
-        nickname : "リョウ",
-        code: "5703-9247-3349",
-        title : "おしゃべり会",
-        text : "スプラで遊んでくれる友達がいないので友達募集中です。おしゃべりしながらまったり遊びたいです。",
-        mode:"asari",
-        xp:"1600",
-        rea : "tyouzame.jpg",
-    }
-    ,
-
 ]
     export default PostsData;
