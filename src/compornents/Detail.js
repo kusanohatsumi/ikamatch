@@ -1,12 +1,20 @@
 import React from 'react'
 import "../scss/_compornents/detail.scss"
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 // import { useDispatch,  } from 'react-redux';
-// import { useState } from 'react';
 // import { addPost } from './features/Posts';
 // import PostsData from './DummyData';
 
+import { doc } from 'firebase/firestore';
+import db from './Firebase';
+import { auth } from './Firebase';
+import {useAuthState} from "react-firebase-hooks/auth";
+
+
+
 export const Detail = () => {
+  const PostsData = useSelector((state) => state.posts.value);
 
   // ---
       const doc = document;
@@ -15,7 +23,6 @@ export const Detail = () => {
         const detailItem = doc.querySelectorAll(".detailItem");
         const AppBtn = doc.querySelector(".AppBtn");
 
-        console.log(detailItem);
         detailItem.forEach((e,i)=>{
           console.log();
           if (flg) {
@@ -30,45 +37,29 @@ export const Detail = () => {
             });
     }
   // ---
+  // ---
+  const [user] = useAuthState(auth); 
+  const [hostId,setHostId] = useState();
+  // const washingtonRef = doc(db, "eriomarosuto", "D67N6lLRtvgoYnsRDkyWB6tnyj72");
 
-  // --- 項目
-  // const [title] = useState("");
-  // const [text] = useState("");
-  // const [icon] = useState("");
-  // const [name] = useState("");
-  // const [code] = useState("");
-  // const [area] = useState("");
-  // const [mode] = useState("");
-  // const [time] = useState("");
-  // const [xp]   = useState("");
+  const getHostId = () =>{
+  }
+  console.log();
+
+
+
   // ---
 
-  // const postList = useSelector((state) => state.posts.value);
-  // console.log(postList);
 
-    // const dispatch = useDispatch();
-    // dispatch(addPost(
-    //   {
-    //     icon: icon,
-    //     name:name,
-    //     code:code,
-    //     title: title,
-    //     area: area,
-    //     mode: mode,
-    //     time: time,
-    //     xp: xp,
-    //     text: text,
-    //   }
-    // ));
-
-    const PostsData = useSelector((state) => state.posts.value);
 
 
     // open
   return (
     <div className='container'>
-      {PostsData.map((post)=>(
-      <div className='detailItem' onClick={openDetail}>
+      {PostsData.map((post,i)=>(
+      <div key={i} className='detailItem open' 
+      // onClick={openDetail}
+      >
         <div id='detailText' className='text'>
           <div className="icon">
             <figure><img src={`${process.env.PUBLIC_URL}/img/${post.icon}` } alt="アイコン" /></figure>
@@ -78,8 +69,10 @@ export const Detail = () => {
           <h3 className="ttl">{post.title}</h3>
           <div className="tag"></div>
           <p className="comment">{post.text}</p>
-          <div className='AppBtn'>
-            <button type='submit'>応募する</button>
+          <div className='AppBtn add'>
+            <button 
+            onClick={()=>getHostId()} 
+            type='submit'>応募する</button>
           </div>
         </div>
         <figure className='Img'>

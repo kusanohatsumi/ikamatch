@@ -1,6 +1,6 @@
 export const PostsData = [
     {
-        id:"",
+        id:"D67N6lLRtvgoYnsRDkyWB6tnyj72",
         icon:"icon.svg",
         nickname:"みつなが",
         code: "2341-7899-7384",
