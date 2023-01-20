@@ -3,6 +3,7 @@ import "../scss/_compornents/detail.scss"
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { addPost } from './features/Posts';
+import PostsData from './DummyData';
 
 export const Detail = () => {
 
@@ -30,34 +31,34 @@ export const Detail = () => {
   // ---
 
   // --- 項目
-  const [title] = useState("");
-  const [text] = useState("");
-  const [icon] = useState("");
-  const [name] = useState("");
-  const [code] = useState("");
-  const [area] = useState("");
-  const [mode] = useState("");
-  const [time] = useState("");
-  const [xp]   = useState("");
+  // const [title] = useState("");
+  // const [text] = useState("");
+  // const [icon] = useState("");
+  // const [name] = useState("");
+  // const [code] = useState("");
+  // const [area] = useState("");
+  // const [mode] = useState("");
+  // const [time] = useState("");
+  // const [xp]   = useState("");
   // ---
 
-  const postList = useSelector((state) => state.posts.value);
-  console.log(postList);
+  // const postList = useSelector((state) => state.posts.value);
+  // console.log(postList);
 
-    const dispatch = useDispatch();
-    dispatch(addPost(
-      {
-        icon: icon,
-        name:name,
-        code:code,
-        title: title,
-        area: area,
-        mode: mode,
-        time: time,
-        xp: xp,
-        text: text,
-      }
-    ))
+    // const dispatch = useDispatch();
+    // dispatch(addPost(
+    //   {
+    //     icon: icon,
+    //     name:name,
+    //     code:code,
+    //     title: title,
+    //     area: area,
+    //     mode: mode,
+    //     time: time,
+    //     xp: xp,
+    //     text: text,
+    //   }
+    // ));
 
 
 
@@ -65,7 +66,7 @@ export const Detail = () => {
     // open
   return (
     <div className='container'>
-      {postList.map((post)=>(
+      {PostsData.map((post)=>(
       <div className='detailItem' onClick={openDetail}>
         <div id='detailText' className='text'>
           <div className="icon">
