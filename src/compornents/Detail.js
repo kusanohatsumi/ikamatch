@@ -1,9 +1,10 @@
 import React from 'react'
 import "../scss/_compornents/detail.scss"
-import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
-import { addPost } from './features/Posts';
-import PostsData from './DummyData';
+import { useSelector } from 'react-redux';
+// import { useDispatch,  } from 'react-redux';
+// import { useState } from 'react';
+// import { addPost } from './features/Posts';
+// import PostsData from './DummyData';
 
 export const Detail = () => {
 
@@ -60,7 +61,7 @@ export const Detail = () => {
     //   }
     // ));
 
-
+    const PostsData = useSelector((state) => state.posts.value);
 
 
     // open
