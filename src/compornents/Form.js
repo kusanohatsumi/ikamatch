@@ -4,6 +4,12 @@ import { useState } from 'react';
 // ---
 import { useForm } from 'react-hook-form';
 // ---
+import { useDispatch } from 'react-redux';
+import { addPost } from './features/Posts';
+import { useSelector } from 'react-redux';
+
+
+// ---
 
 // 
 export const Form = () => {
@@ -12,11 +18,47 @@ export const Form = () => {
     const onSubmit = (data) => {
         console.log(data)
     };
-    // --
+    // -- formの記入概要
+    const [title,setTitle] = useState("");
+    const [text,setText] = useState("");
+    const [area,setArea] = useState("");
+    const [mode,setMode] = useState("");
+    const [time,setTime] = useState("");
+    const [xp,setXp] = useState("");
 
     // ---
-    const [area, setArea] = useState("");
 
+    const postList = useSelector((state) => state.posts.value);
+    console.log(postList);
+
+    const dispatch = useDispatch();
+    const handleClick = () => {
+    dispatch(addPost(
+        {
+            // id: postList.length,
+            title: title,
+            area: area,
+            mode: mode,
+            time: time,
+            xp: xp,
+            text: text,
+        })
+        );
+        // -
+        setTitle("");
+        setText("");
+        setArea("");
+        setMode("");
+        setXp("");
+        
+
+    };
+
+
+
+
+
+    // ---
     return (
             <div className='container'>
                 <form className='form' onSubmit={handleSubmit(onSubmit)}> 
@@ -28,6 +70,8 @@ export const Form = () => {
                         <input
                             id='ttl'
                             {...register("ttl")}
+                            value={title}
+                            onChange={(e)=>setTitle(e.target.value)} 
                             placeholder="ここにタイトルを入力" />
                     </div>
 
@@ -54,7 +98,7 @@ export const Form = () => {
 
                     <div className="form__item">
                         <label htmlFor="mode">対戦モード</label>
-                        <select id='mode' {...register("mode")} className="mode__select" name="mode" 
+                        <select id='mode' {...register("mode")} onChange={(e)=>setMode(e.target.value)} className="mode__select" name="mode" 
                             style={{
                                 // background: "url(img/icon_down.svg)",
                                 // backgroundRepeat:"no-repeat",
@@ -73,21 +117,21 @@ export const Form = () => {
 
                     <div className="form__item">
                         <label htmlFor="time">開始予定日</label>
-                        <input id='time' {...register("time")} type="dateTime-local" placeholder="開始予定時刻を入力"/>
+                        <input id='time' {...register("time")  } onChange={(e)=>setTime(e.target.value)} type="dateTime-local" placeholder="開始予定時刻を入力"/>
                     </div>
 
                     <div className="form__item">
                         <label htmlFor="xp">xp </label>
-                        <input id='xp' {...register("xp")} type="text" placeholder="自チームの平均xpを入力" />
+                        <input id='xp' {...register("xp")} onChange={(e)=>setXp(e.target.value)} type="text" placeholder="自チームの平均xpを入力" />
                     </div>
 
                     <div className="form__item">
                         <label htmlFor="other">その他</label>
-                        <textarea id='other' {...register("other")} name="other" cols="30" rows="10" wrap="hard"></textarea>
+                        <textarea id='other' {...register("other")} onChange={(e)=>setText(e.target.value)} name="other" cols="30" rows="10" wrap="hard"></textarea>
                     </div>
 
                     <div className='btn'>
-                        <button>募集を投稿する</button>
+                        <button onClick={()=> handleClick()}>募集を投稿する</button>
                         {/* <button><Link to="/send">募集を投稿する</Link></button> */}
                     </div>
                 </form>

@@ -29,11 +29,17 @@
         .icon{
             display: flex;
             align-items: center;
+
             figure{
                 width:32px;
                 height:32px;
-                background-color: #999;
+                border:solid 1px #333;
                 border-radius: 50%;
+                overflow: hidden;
+                img{
+                    border-radius: 50%;
+                    transform: translateY(5px);
+                }
             }
             .name, .friend-cord{
                 display: inline-block;

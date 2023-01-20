@@ -4,22 +4,22 @@ import App from './compornents/App';
 import './scss/index.scss';
 import { BrowserRouter} from "react-router-dom";
 
-// import { configureStore } from '@reduxjs/toolkit';
-// import { Provider } from 'react-redux';
-// import postsReducer from "./compornents/features/Posts";
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+import postsReducer from "./compornents/features/Posts";
 
-// const store = configureStore({
-//   reducer:{
-//     posts:postsReducer,
-//   }
-// });
+const store = configureStore({
+  reducer:{
+    posts:postsReducer,
+  }
+});
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <BrowserRouter>
-    {/* <Provider store={store}> */}
+    <Provider store={store}>
       <App />
-    {/* </Provider> */}
+    </Provider>
   </BrowserRouter>
 );
