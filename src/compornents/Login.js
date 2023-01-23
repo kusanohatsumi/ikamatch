@@ -12,36 +12,41 @@ export const Login = () => {
 
     <div className="container">
         <form className='Login'>
+            {/* --- ログイン項目 --- */}
+            {/* ID */}
             <div className="Login__item">
-                <label for="title">ログインID</label>
-                <input type="text" placeholder="ログインIDまたはパスワードを入力してください" />
+                <label htmlFor="ID">ログインID</label>
+                <input id='ID' type="text" placeholder="ログインIDまたはパスワードを入力してください" />
             </div>
+            {/* パスワード */}
             <div className="Login__item">
-                <label for="title">パスワード</label>
-                <input type="password" placeholder="パスワードを入力してください" />
+                <label htmlFor="password">パスワード</label>
+                <input id='password' type="password" placeholder="パスワードを入力してください" />
             </div>
             <div className="Login__help">
                 <Link to="/passHelp">パスワードを忘れた場合はこちら</Link>
             </div>
-
             <button type='button' className='Login__btn'>ログイン</button>
+
+            {/* --- 新規登録 --- */}
             <button type='button' className='Login__btn Login__btn--new'>
-                <Link to="/new">新規作成</Link>
+                <Link to="/newAccount">新規作成</Link>
             </button>
+
             <div className='or'>
                 <p>または</p>
             </div>
 
+            {/* --- 別アカウントでログイン --- */}
             <div className="Login__btn--otherAccount">
                 <SignInWdthGoogle />
                 <button className='login__btn'>Twitterでログイン</button>
                 <button className='login__btn'>Facebookでログイン</button>
             </div>
 
-
         </form>
     </div>
-  )
+    )
 }
 
 

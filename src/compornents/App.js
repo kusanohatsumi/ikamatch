@@ -1,15 +1,20 @@
+import "../scss/_develop/asset.scss";
+// ---
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { Main } from "./Main";
-import { Form } from "./Form";
-
-import "../scss/_develop/asset.scss";
-
-import {Route, Routes } from "react-router-dom";
-import Detail from "./Detail";
+import { RecruitForm } from "./RecruitForm";
+import { Detail } from "./Detail";
 import { Send } from "./Send";
 import { Login } from "./Login";
 import { New } from "./New";
+import { Recruitment } from "./Recruitment";
+import { Confirmation } from "./Confirmation";
+import { Checking } from "./Checking";
+// ---
+import {Route, Routes } from "react-router-dom";
+import { NewAccount } from "./NewAccount";
+
 function App() {
   return (
     <div className="App">
@@ -17,9 +22,15 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/About" element={<Detail />} />
-          <Route path="/recruitform" element={<Form />} />
+          {/* --- 募集関連 */}
+          <Route path="/Checking" element={<Checking />} />
+          <Route path="/recruitment" element={<Recruitment />} />
+          <Route path="/recruitform" element={<RecruitForm />} />
+          <Route path="/confirmation" element={<Confirmation />} />
           <Route path="/send" element={<Send />} />
+          {/* ---  ログイン関係*/}
           <Route path="/login" element={<Login />} />
+          <Route path="/newAccount" element={<NewAccount />} />
           <Route path="/new" element={<New />} />
         </Routes>
       <Footer />

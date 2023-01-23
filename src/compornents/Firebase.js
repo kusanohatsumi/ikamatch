@@ -20,4 +20,4 @@ const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
 export default db;
-export {auth, provider}
+export { auth, provider}

@@ -1,43 +1,29 @@
 import React from 'react'
 import "../scss/_compornents/detail.scss"
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
-// import { useDispatch,  } from 'react-redux';
-// import { addPost } from './features/Posts';
-// import PostsData from './DummyData';
 
-import { doc } from 'firebase/firestore';
 import db from './Firebase';
 import { auth } from './Firebase';
 import {useAuthState} from "react-firebase-hooks/auth";
-import { async } from '@firebase/util';
-import {  updateDoc, arrayUnion,  } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore";
+import { getAuth } from 'firebase/auth';
 
-
-export const Detail = () => {
-  const PostsData = useSelector((state) => state.posts.value);
+export const Myframe = () => {
   const [user] = useAuthState(auth); 
-  const getClickedPostData = async (clickedPostData) => {
-      const washingtonRef = doc(db, "eriomarosuto", clickedPostData.id);
-      await updateDoc(washingtonRef, {
-        participant: arrayUnion({
-          userName:user.displayName,
-          participantUid:user.uid,
-          imageUrl:user.photoURL,
-        })
-    });
+  const getRecruitItem = async () => {
+    const docRef = doc(db,"eriomarosuto",user.uid);
+    console.log(user.uid);
+    const docSnap = await getDoc(docRef);
+    console.log(docSnap.data());
+
   }
 
 
-
-  // ---
-
-
-
-
+  getRecruitItem();
   return (
     <div className='container'>
-      {PostsData.map((post,i)=>(
+      現在募集中の
+
+      {/* {PostsData.map((post,i)=>(
       <div key={i} className='detailItem open' 
       // onClick={openDetail}
       >
@@ -60,12 +46,7 @@ export const Detail = () => {
           <img src={`${process.env.PUBLIC_URL}/img/stage/${post.area}`} alt='thumbnail' />
         </figure>
       </div>
-      ))}
+      ))} */}
     </div>
-
-    
   )
 }
-export default Detail;
-
-
