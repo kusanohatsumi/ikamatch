@@ -3,30 +3,50 @@ import "../scss/_compornents/login.scss"
 
 import { Link } from 'react-router-dom'
 import { auth, provider } from './Firebase'
-import { signInWithPopup } from 'firebase/auth'
-
-
+import { signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth'
+import { useState } from 'react'
 
 export const Login = () => {
-  return (
+    const [email,setEmail] = useState("");
+    const [password,setPassword] = useState("");
+
+        // 入力した情報をfirebaseで認証
+        const handleSubmit = async(e) => {
+            e.preventDefault();
+            try{
+                await signInWithEmailAndPassword(
+                    auth, email, password
+                );
+            } catch(error){
+                alert("正しく入力してください");
+            }
+        }
+    
+    return (
 
     <div className="container">
-        <form className='Login'>
+        <form className='Login' onSubmit={handleSubmit}>
             {/* --- ログイン項目 --- */}
-            {/* ID */}
+            {/* メールアドレス */}
             <div className="Login__item">
-                <label htmlFor="ID">ログインID</label>
-                <input id='ID' type="text" placeholder="ログインIDまたはパスワードを入力してください" />
+                <label htmlFor="email">メールアドレス</label>
+                <input 
+                id='email' type="email" placeholder="メールアドレスを入力してください"
+                onChange={(event)=>setEmail(event.target.value)}
+                />
             </div>
             {/* パスワード */}
             <div className="Login__item">
                 <label htmlFor="password">パスワード</label>
-                <input id='password' type="password" placeholder="パスワードを入力してください" />
+                <input 
+                id='password' type="password" placeholder="パスワードを入力してください"
+                onChange={(event)=>setPassword(event.target.value)}
+                />
             </div>
             <div className="Login__help">
                 <Link to="/passHelp">パスワードを忘れた場合はこちら</Link>
             </div>
-            <button type='button' className='Login__btn'>ログイン</button>
+            <button type='submit' className='Login__btn'>ログイン</button>
 
             {/* --- 新規登録 --- */}
             <button type='button' className='Login__btn Login__btn--new'>
@@ -50,8 +70,7 @@ export const Login = () => {
 }
 
 
-// ----
-
+// ---- Googleでログインする
 function SignInWdthGoogle(){
     const signinWidthGoogle = ()=> {
         signInWithPopup(auth,provider);
@@ -64,10 +83,13 @@ function SignInWdthGoogle(){
     
 }
 
+// --- ログイン後のデザイン
 function UserInfo(){
     return(
         <figure>
-            <img src={auth.currentUser.photoURL} referrerPolicy="no-referrer" alt="アイコン" />
+            <Link to="/myPage" >
+                <img src={auth.currentUser.photoURL} referrerPolicy="no-referrer" alt="アイコン" />
+            </Link>
         </figure>
     );
 }

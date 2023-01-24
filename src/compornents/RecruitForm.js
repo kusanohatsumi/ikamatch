@@ -23,10 +23,9 @@ import Option from './stage/Option';
 
 // 
 export const RecruitForm = () => {
-
-
-
     const [user] = useAuthState(auth); 
+
+
 
     const {register,handleSubmit} = useForm();
     const onSubmit = (data) => {
@@ -73,6 +72,7 @@ export const RecruitForm = () => {
                 <div className="form__thum">
                     <img id='selectImg' src={`${process.env.PUBLIC_URL}/img/stage/${Option.value}`} alt='画像を選択してください' />
                 </div>
+
                 <div className="form__item">
                     <label htmlFor="title">タイトル</label>
                     <input
