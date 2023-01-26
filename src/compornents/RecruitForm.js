@@ -1,15 +1,13 @@
 import React from 'react'
 import "../scss/_compornents/form.scss";
 import { useState } from 'react';
-import { doc } from 'firebase/firestore';
-import { setDoc } from 'firebase/firestore';
+import { doc, setDoc } from 'firebase/firestore';
 // ---
 import { useForm } from 'react-hook-form';
 // ---
 import { useDispatch } from 'react-redux';
 import { addPost } from './features/Posts';
-import { useSelector } from 'react-redux';
-
+// ---
 import db from './Firebase';
 import { auth } from './Firebase';
 import {useAuthState} from "react-firebase-hooks/auth";
@@ -25,8 +23,6 @@ import Option from './stage/Option';
 export const RecruitForm = () => {
     const [user] = useAuthState(auth); 
 
-
-
     const {register,handleSubmit} = useForm();
     const onSubmit = (data) => {
         setDoc(doc(db,"eriomarosuto", user.uid),data);
@@ -40,7 +36,6 @@ export const RecruitForm = () => {
     const [time,setTime] = useState("");
     const [xp,setXp] = useState("");
     // ---
-    const postList = useSelector((state) => state.posts.value);
     const dispatch = useDispatch();
     const handleClick = () => {
     dispatch(addPost(
@@ -122,7 +117,7 @@ export const RecruitForm = () => {
                     </select>
                 </div>
                 <div className="form__item">
-                    <label htmlFor="time">開始予定日</label>
+                    <label htmlFor="time">開始予定日時</label>
                     <input id='time' {...register("time")  } onChange={(e)=>setTime(e.target.value)} type="dateTime-local" placeholder="開始予定時刻を入力"/>
                 </div>
                 <div className="form__item">
@@ -134,7 +129,7 @@ export const RecruitForm = () => {
                     <textarea id='other' {...register("other")} onChange={(e)=>setText(e.target.value)} name="other" cols="30" rows="10" wrap="hard"></textarea>
                 </div>
                 <div className='btn'>
-                    <button onClick={()=> handleClick()}><Link to="/Confirmation">募集を投稿する</Link></button>
+                    <button onClick={()=> handleClick()}><Link to="/confirmation">確認</Link></button>
                 </div>
             </form>
         </div>

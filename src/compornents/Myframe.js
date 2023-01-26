@@ -5,7 +5,6 @@ import db from './Firebase';
 import { auth } from './Firebase';
 import {useAuthState} from "react-firebase-hooks/auth";
 import { doc, getDoc } from "firebase/firestore";
-import { getAuth } from 'firebase/auth';
 
 export const Myframe = () => {
   const [user] = useAuthState(auth); 
@@ -14,10 +13,7 @@ export const Myframe = () => {
     console.log(user.uid);
     const docSnap = await getDoc(docRef);
     console.log(docSnap.data());
-
   }
-
-
   getRecruitItem();
   return (
     <div className='container'>

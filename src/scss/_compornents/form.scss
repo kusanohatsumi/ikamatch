@@ -23,7 +23,7 @@ h2{
 
 
 
-input,select{
+input,select,.inputValue{
     width:100%;
     // outline: solid #E2E2E2 1px;
     height: 56px;
@@ -72,7 +72,7 @@ input,select{
             padding: 12px;
             color: #858585;
         }
-        input,select{
+        input,select,p{
             width:100%;
             border:solid 2px #E2E2E2;
             padding: 0 12px;
@@ -83,27 +83,46 @@ input,select{
             font-size: 20px;
             line-height: 1.5em;
         }
+        // ---
+        .inputValue{
+            line-height: 50px;
+            &--area{
+                display: inline-block;
+                height:auto;
+            }
+        }
     }
     margin-bottom: 120px;
 }
 
 
 .btn{
-    width: 204px;
-    height:62px;
+    width:80%;
     margin: 32px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row-reverse;
 
     button{
-        width:100%;
-        height:100%;
+        width: 204px;
+        height:62px;
         background-color:#2ACCC8 ;
         color: #fff;
         border-radius: 8px;
         font-size: 2rem;
         transition: .2s ease;
+        margin:0 12px;
+        &:nth-child(2){
+            border:solid 1px a.$main;
+            background-color: a.$base;
+        }
     }
     button:hover{
-        background-color: #FB6D10;
+        background-color: a.$sub;
+        &:nth-child(2){
+            border:solid 1px a.$sub;
+        }
     }
 
 }

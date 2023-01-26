@@ -2,9 +2,6 @@ import React from 'react'
 import "../scss/_compornents/detail.scss"
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
-// import { useDispatch,  } from 'react-redux';
-// import { addPost } from './features/Posts';
-// import PostsData from './DummyData';
 
 import { doc } from 'firebase/firestore';
 import db from './Firebase';
@@ -17,10 +14,15 @@ import {  updateDoc, arrayUnion,  } from "firebase/firestore";
 export const Detail = () => {
   const PostsData = useSelector((state) => state.posts.value);
   const [user] = useAuthState(auth); 
+
+  // 
   const getClickedPostData = async (clickedPostData) => {
+    // 更新したいドキュメント
       const washingtonRef = doc(db, "eriomarosuto", clickedPostData.id);
       await updateDoc(washingtonRef, {
+        // 指定した配列名に要素を追加
         participant: arrayUnion({
+          // 追加したい名前とデータ[ 項目：データ, ]
           userName:user.displayName,
           participantUid:user.uid,
           imageUrl:user.photoURL,
