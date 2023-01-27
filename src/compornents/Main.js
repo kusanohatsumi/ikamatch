@@ -4,6 +4,7 @@ import { Search2 } from './Search2'
 
 
 import "../scss/_compornents/main.scss";
+import { Data } from './Data';
 
 
 export const Main = () => {

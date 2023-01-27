@@ -9,8 +9,6 @@ import { collection ,getDocs } from 'firebase/firestore'
 // ---
 
 export const Search1 = () => {
-
-    
     const postData = collection(db,"eriomarosuto");
     const [state,setState] = useState();
 
@@ -20,9 +18,7 @@ export const Search1 = () => {
             setState(snapshot.docs.map((doc) => (doc.data()) ) );
         })
     },[]);
-    console.log(state);
-
-
+    // console.log(state);
 
 
     return (
@@ -46,8 +42,8 @@ export const Search1 = () => {
                                 <time dateTime="2022-12-13T22:00">22:00</time>
                                 <p>対抗戦の相手募集</p>
                                 <div className="tag">
-                                    <a href='eri'>#えりおまろすと5先</a>
-                                    <a href='eri'>#xp2700</a>
+                                    {/* <a href='eri'>#えりおまろすと5先</a>
+                                    <a href='eri'>#xp2700</a> */}
                                 </div>
                             </div>
                         </div>
@@ -63,9 +59,8 @@ export const Search1 = () => {
                                 <time dateTime="2022-12-13T21:30">21:30</time>
                                 <p>対抗戦の参加チーム募集</p>
                                 <div className="tag">
-                                    <a href='eri'>#えりおまろすと5先</a>
-                                    <a href='eri'>#xp2500</a>
-                                    
+                                    {/* <a href='eri'>#えりおまろすと5先</a>
+                                    <a href='eri'>#xp2500</a> */}
                                 </div>
                             </div>
                         </div>
@@ -82,9 +77,8 @@ export const Search1 = () => {
                                 <time dateTime="2022-12-13T19:00">19:00</time>
                                 <p>カスタムマッチ募集</p>
                                 <div className="tag">
-                                    <a href='eri'>#えりおまろすと5先</a>
-                                    <a href='eri'>#xp2700</a>
-                                    
+                                    {/* <a href='eri'>#えりおまろすと5先</a>
+                                    <a href='eri'>#xp2700</a> */}
                                 </div>
                             </div>
                         </div>
@@ -101,9 +95,8 @@ export const Search1 = () => {
                                 <time dateTime="2022-12-13T22:00">22:00</time>
                                 <p>対抗戦の相手募集</p>
                                 <div className="tag">
-                                    <a href='eri'>#えりおまろすと5先</a>
-                                    <a href='eri'>#xp2600</a>
-                                    
+                                    {/* <a href='eri'>#えりおまろすと5先</a>
+                                    <a href='eri'>#xp2600</a> */}
                                 </div>
                             </div>
                         </div>

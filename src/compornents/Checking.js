@@ -2,7 +2,6 @@ import React from 'react'
 import { auth } from './Firebase';
 import {useAuthState} from "react-firebase-hooks/auth";
 import { Login } from './Login';
-import { RecruitForm } from './RecruitForm';
 import { Recruitment } from './Recruitment';
 
 
@@ -12,8 +11,10 @@ export const Checking = () => {
     return (
         <div>
             {user ? (
+                // ログインしていたら
                 <Recruitment />
                 ):(
+                // ログインしていなかったら
                 <Login />
             )}
         </div>

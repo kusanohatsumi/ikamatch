@@ -8,6 +8,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import postsReducer from "./compornents/features/Posts";
 
+
 const store = configureStore({
   reducer:{
     posts:postsReducer,
