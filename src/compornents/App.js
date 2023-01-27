@@ -14,6 +14,7 @@ import { Checking } from "./Checking";
 // ---
 import {Route, Routes } from "react-router-dom";
 import { NewAccount } from "./NewAccount";
+import { MyPage } from "./MyPage";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/newAccount" element={<NewAccount />} />
           <Route path="/new" element={<New />} />
+          <Route path="/mypage" element={<MyPage />} />
         </Routes>
       <Footer />
     </div>

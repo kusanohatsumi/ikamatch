@@ -7,6 +7,7 @@ import { Myframe } from './Myframe';
 import RecruitForm from './RecruitForm';
 export const  Recruitment =  () => {
   const userId = auth.currentUser.uid;
+  console.log(userId);
 
   const [state,setState] = useState("");
 
@@ -24,20 +25,26 @@ export const  Recruitment =  () => {
   useEffect(() => {
     const usersCollectionRef = collection(db, 'eriomarosuto');
     getDocs(usersCollectionRef).then((querySnapshot) => {
-      setState(querySnapshot.docs.map((doc) => doc.data()));
+      setState(querySnapshot.docs.map((doc)=>doc.id));
+      // ドキュメントのIDを取得
     });
   }, []);
-
-
-
+  console.log(state);
+  const result = state.indexOf(userId);
+  if (result !== -1) {
+    console.log("含まれる");
+  } else{
+    console.log("含まれない");
+  }
   return (
     <div>
-      { state.indexOf(userId) ?
-      // uidが含まれていたら
-      <Myframe />
-      :
-      // uidが含まれていなかったら
-      <RecruitForm />
+      { result !== -1 ? (
+        // 含まれる
+          <Myframe />
+        ):(
+        // 含まれない
+          <RecruitForm />
+      )
     }
     </div>
   )

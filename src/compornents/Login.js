@@ -87,7 +87,7 @@ function SignInWdthGoogle(){
 function UserInfo(){
     return(
         <figure>
-            <Link to="/myPage" >
+            <Link to="/mypage" >
                 <img src={auth.currentUser.photoURL} referrerPolicy="no-referrer" alt="アイコン" />
             </Link>
         </figure>
