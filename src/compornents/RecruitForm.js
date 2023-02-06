@@ -114,10 +114,10 @@ export const RecruitForm = () => {
                     placeholder="自チームの平均xpを入力" />
                 </div>
                 <div className="form__item">
-                    <label htmlFor="other">その他</label>
-                    <textarea id='other' 
-                    {...register("other")} 
-                    className="other" cols="30" rows="10" wrap="hard">
+                    <label htmlFor="text">その他</label>
+                    <textarea id='text' 
+                    {...register("text")} 
+                    className="text" cols="30" rows="10" wrap="hard">
                     </textarea>
                 </div>
                 <div className='btn'>

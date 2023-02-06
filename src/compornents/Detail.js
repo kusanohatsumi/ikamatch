@@ -28,6 +28,7 @@ export const Detail = () => {
           imageUrl:user.photoURL,
         })
     });
+
   }
 
 
@@ -40,8 +41,7 @@ export const Detail = () => {
   return (
     <div className='container'>
       {PostsData.map((post,i)=>(
-      <div key={i} className='detailItem open' 
-      // onClick={openDetail}
+      <div key={i} className='detailItem' 
       >
         <div id='detailText' className='text'>
           <div className="icon">

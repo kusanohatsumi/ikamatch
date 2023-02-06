@@ -21,7 +21,6 @@ export const Login = () => {
                 alert("正しく入力してください");
             }
         }
-    
     return (
 
     <div className="container">

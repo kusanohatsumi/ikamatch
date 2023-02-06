@@ -1,4 +1,4 @@
-import "../scss/_develop/asset.scss";
+// import "../scss/_develop/asset.scss";
 // ---
 import { Footer } from "./Footer";
 import { Header } from "./Header";
