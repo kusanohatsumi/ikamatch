@@ -1,10 +1,12 @@
 import React from 'react'
 import "../scss/_compornents/detail.scss"
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 
-import { doc } from 'firebase/firestore';
 import db from './Firebase';
+import { doc, collection , limit, onSnapshot, orderBy, query,  } from 'firebase/firestore'
+
 import { auth } from './Firebase';
 import {useAuthState} from "react-firebase-hooks/auth";
 import { async } from '@firebase/util';
@@ -12,8 +14,16 @@ import {  updateDoc, arrayUnion,  } from "firebase/firestore";
 
 
 export const Detail = () => {
-  const PostsData = useSelector((state) => state.posts.value);
   const [user] = useAuthState(auth); 
+
+  const [state,setState] = useState([]);
+  useEffect(()=>{
+      const postData = collection(db,"eriomarosuto");
+      const q = query(postData);
+      onSnapshot(q,(snapshot)=>{
+          setState(snapshot.docs.map((doc) => (doc.data())));
+      })
+  },[]);
 
   // 
   const getClickedPostData = async (clickedPostData) => {
@@ -28,7 +38,6 @@ export const Detail = () => {
           imageUrl:user.photoURL,
         })
     });
-
   }
 
 
@@ -40,18 +49,20 @@ export const Detail = () => {
 
   return (
     <div className='container'>
-      {PostsData.map((post,i)=>(
+      {state.map((post,i)=>(
       <div key={i} className='detailItem' 
       >
         <div id='detailText' className='text'>
           <div className="icon">
-            <figure><img src={`${process.env.PUBLIC_URL}/img/${post.icon}` } alt="アイコン" /></figure>
+            <figure><img src={`${process.env.PUBLIC_URL}/img/icon.svg` } alt="アイコン" /></figure>
             <p className="name">{post.name}</p>
             <p className="friend-cord">フレンドコード:{post.code}</p>
           </div>
+          <Link to={`/about/${post.id}`} state={{test:"test"}}>
           <h3 className="ttl">{post.title}</h3>
           <div className="tag"></div>
           <p className="comment">{post.text}</p>
+          </Link>
           <div className='AppBtn add'>
             <button 
             onClick={()=> getClickedPostData(post)} 
@@ -59,7 +70,9 @@ export const Detail = () => {
           </div>
         </div>
         <figure className='Img'>
-          <img src={`${process.env.PUBLIC_URL}/img/stage/${post.area}`} alt='thumbnail' />
+          <Link to={`/about/${post.id}`} state={{test:"test"}}>
+            <img src={`${process.env.PUBLIC_URL}/img/stage/${post.selectCharacter}.jpg`} alt='thumbnail' />
+          </Link>
         </figure>
       </div>
       ))}

@@ -1,11 +1,14 @@
 import React from 'react'
 // import "../scss/_compornents/new.scss"
-
+import { auth } from './Firebase';
+import {useAuthState} from "react-firebase-hooks/auth";
 
 
 import { Link } from 'react-router-dom'
 
 export const New = () => {
+    const [user] = useAuthState(auth); 
+    console.log(user.uid);
 
     return (
         <div>

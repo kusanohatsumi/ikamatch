@@ -1,71 +1,61 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
+import { useState, useEffect } from 'react';
 import "../scss/_compornents/form.scss";
-import { useState } from 'react';
-// ---
 import { useForm } from 'react-hook-form';
-// ---
-// ---
 import db, { auth } from './Firebase';
 import {useAuthState} from "react-firebase-hooks/auth";
-
-import { Link } from 'react-router-dom';
-
-// ---
-
 import Option from './stage/Option';
-import { doc, setDoc } from 'firebase/firestore';
+import { doc, setDoc, getDoc, Timestamp } from 'firebase/firestore';
+import { async } from '@firebase/util';
+import { Link } from 'react-router-dom';
+import { Myframe } from './Myframe';
 
 
 // 
 export const RecruitForm = () => {
     const [user] = useAuthState(auth); 
+    const [time,setTime] = useState();
 
     const {register,handleSubmit} = useForm();
-    const onSubmit = (data) => {
+    const onSubmit = async(data) => {
         console.log(data);
-        setDoc(doc(db,"eriomarosuto", user.uid),data);
+        await setDoc(doc(db,"eriomarosuto", user.uid),data);
         // ↑ 「eriomarosuto」コレクションに uid と同じ名前でドキュメントを追加
-    };
+    }
+
+    const [get,setGet] = useState([]);
+
+    useEffect(()=>{
+        const docRef = doc(db,"eriomarosuto",user.uid);
+        getDoc(docRef).then((docSnapshot)=>{
+            // if (docSnapshot.exists()) {
+            //     console.log('Document data:', docSnapshot.data());
+            // } else {
+            //     console.log('No such document!');
+            // }
+            setGet(docSnapshot.data());
+        })
+        console.log(get);
+    },[]);
 
 
-
-    // -- formの記入概要
-    // const [title,setTitle] = useState("");
-    const [area,setArea] = useState("");
-    const [selectCharacter,setSelectCharacter] = useState("");
-    const [mode,setMode] = useState("");
-    const [time,setTime] = useState("");
-    const [xp,setXp] = useState("");
-    const [text,setText] = useState("");
-    // ---
-
-
-    // ---
     return (
         <div className='container'>
             <form className='form' onSubmit={handleSubmit(onSubmit)}> 
-                <div  className="form__thum">
-                    <img id='selectImg' src={`${process.env.PUBLIC_URL}/img/stage/`} alt='画像を選択してください' />
-                </div>
-
                 <div className="form__item">
                     <label htmlFor="title">タイトル</label>
                     <input
-                        id='ttl'
-                        {...register("ttl")}
-                        // onChange={(e)=>setTitle(e.target.value)}
+                        id='title'
+                        {...register("ttl",{ required: true })}
                         placeholder="ここにタイトルを入力" />
                 </div>
-                {/* --- */}
                 <div className="form__item">
                     <label htmlFor='selectCharacter' >対戦エリア</label>
                     <select 
                         className="mode__select" 
                         defaultValue="no_img.jpg" 
                         style={{cursor:"pointer",}} 
-                        onClick={(e)=>setArea(e.target.id)}
-                        {...register("selectCharacter")} 
-                        // onChange={(e)=>setArea(e.target.value)}
+                        {...register("selectCharacter",{ required: true })} 
                         > 
                         {Option.map((option)=>(
                             <option 
@@ -79,12 +69,10 @@ export const RecruitForm = () => {
                         ))}
                     </select>
                 </div>
-                {/* --- */}
                 <div className="form__item">
                     <label htmlFor="mode">対戦モード</label>
                     <select id='mode' 
-                    {...register("mode")}
-                    // onChange={(e)=>setMode(e.target.value)}
+                    {...register("mode",{ required: true })}
                     className="mode__select"
                         style={{
                             cursor:"pointer",
@@ -100,34 +88,31 @@ export const RecruitForm = () => {
                 <div className="form__item">
                     <label htmlFor="time">開始予定日時</label>
                     <input id='time' 
-                    {...register("time")  }
-                    // onChange={(e)=>setTime(e.target.value)}
+                    {...register("time",{ required: true })}
                     type="dateTime-local" 
                     placeholder="開始予定時刻を入力"/>
                 </div>
                 <div className="form__item">
                     <label htmlFor="xp">xp </label>
                     <input id='xp' 
-                    {...register("xp")}
-                    // onChange={(e)=>setXp(e.target.value)}
+                    {...register("xp",{ required: true })}
                     type="text" 
                     placeholder="自チームの平均xpを入力" />
                 </div>
                 <div className="form__item">
-                    <label htmlFor="text">その他</label>
+                    <label htmlFor="text">説明</label>
                     <textarea id='text' 
-                    {...register("text")} 
+                    {...register("text",{ required: true })} 
                     className="text" cols="30" rows="10" wrap="hard">
                     </textarea>
                 </div>
-                <div className='btn'>
-                    <button type='button'>
-                        <Link to="/confirmation">確認</Link>
-                    </button>
-                    <button type='submit'>
-                        保存
-                    </button>
 
+                <div className='btn'>
+                    {get ? 
+                    <Myframe />
+                    :
+                    <button type='submit'><Link to="/confirmation">保存</Link></button>
+                    }
                 </div>
             </form>
         </div>

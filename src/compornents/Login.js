@@ -3,10 +3,12 @@ import "../scss/_compornents/login.scss"
 
 import { Link } from 'react-router-dom'
 import { auth, provider } from './Firebase'
+import {useAuthState} from "react-firebase-hooks/auth";
 import { signInWithPopup, signInWithEmailAndPassword } from 'firebase/auth'
 import { useState } from 'react'
 
 export const Login = () => {
+    const [user] = useAuthState(auth); 
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
 
@@ -45,7 +47,13 @@ export const Login = () => {
             <div className="Login__help">
                 <Link to="/passHelp">パスワードを忘れた場合はこちら</Link>
             </div>
-            <button type='submit' className='Login__btn'>ログイン</button>
+            <div>
+                { user ? 
+                    <button type='submit' className='Login__btn'><Link to="/">ログイン</Link></button>
+                    : 
+                    <button type='submit' className='Login__btn'>ログイン</button>
+                }
+            </div>
 
             {/* --- 新規登録 --- */}
             <button type='button' className='Login__btn Login__btn--new'>
@@ -87,7 +95,7 @@ function UserInfo(){
     return(
         <figure>
             <Link to="/mypage" >
-                <img src={auth.currentUser.photoURL} referrerPolicy="no-referrer" alt="アイコン" />
+            <img src={`${process.env.PUBLIC_URL}/img/icon.svg` } alt="アイコン" />
             </Link>
         </figure>
     );

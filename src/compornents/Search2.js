@@ -8,7 +8,7 @@ export const Search2 = () => {
         <div className="recruitTtl">
             <h2>募集中の大会を探す</h2>
             <p>
-                <Link to="/Detail">詳細ページに進む→</Link>
+                <Link to="/about">もっと見る→</Link>
             </p>
         </div>
 

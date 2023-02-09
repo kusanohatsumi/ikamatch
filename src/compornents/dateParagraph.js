@@ -6,14 +6,14 @@ const DateParagraph = ({time}) => {
     useEffect(() => {
         if (time.seconds) {
             const toDate = time.toDate()
-            const formattedDate = format(toDate, "yyyy/MM/dd HH:mm:ss")
+            const formattedDate = format(toDate, "MM/dd HH:mm")
             setFormatTime(() => formattedDate)
         } else {
             // do nothing
         }
     },[time])
     return (
-        <p>{time.seconds ? formatTime : time}</p>
+        <p>開催日：{time.seconds ? formatTime : time}</p>
     )
 }
 

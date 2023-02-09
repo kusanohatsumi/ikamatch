@@ -37,7 +37,7 @@ export const NewAccount = () => {
                         value={password} name='password' type="password" placeholder="パスワードを入力してください" 
                         onChange={(event) => setPassword(event.target.value)} />
                     </div>
-                    <button className='Login__btn'><Link to="/new" >次へ</Link></button>
+                    <button type='submit' className='Login__btn'><Link to="/newUser" >次へ</Link></button>
                 </form>
             </div>
         </div>

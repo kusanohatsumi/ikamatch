@@ -77,8 +77,8 @@ if (!get | get.length == 0) {
               <p className='inputValue'>{get.xp}</p>
             </div>
             <div className='form__item'>
-              <label>その他</label>
-              <p className='inputValue inputValue--area'>{get.other}</p>
+              <label>説明</label>
+              <p className='inputValue inputValue--area'>{get.text}</p>
             </div>
             <div className='btn'>
                 <button type='button'><Link to="/send">募集を投稿</Link></button>

@@ -8,7 +8,7 @@ import "../scss/_compornents/main.scss";
 
 export const Main = () => {
     return (
-        <main>
+        <>
             <div className='firstView'>
                 <figure className='firstView__item'>
                     <img src={`${process.env.PUBLIC_URL}/img/logo.svg`} alt="サムネイル" />
@@ -19,10 +19,10 @@ export const Main = () => {
                 </div>
 
             </div>
-                <div className='container main'>
-                    <Search1 />
-                    <Search2 />
-                </div>
-        </main>
+            <div className='container main'>
+                <Search1 />
+                <Search2 />
+            </div>
+        </>
     )
 }
