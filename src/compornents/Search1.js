@@ -27,7 +27,7 @@ export const Search1 = () => {
             <div className="recruitTtl">
                 <h2>#えりおまろすと5先で探す</h2>
                 <p>
-                    <Link to="/About">もっと見る→</Link>
+                    <Link to="/detail">もっと見る→</Link>
                 </p>
             </div>
 
