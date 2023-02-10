@@ -56,7 +56,7 @@ export const Detail = () => {
           <div className="icon">
             <figure><img src={`${process.env.PUBLIC_URL}/img/icon.svg` } alt="アイコン" /></figure>
             <p className="name">{post.name}</p>
-            <p className="friend-cord">フレンドコード:{post.code}</p>
+            {/* <p className="friend-cord">フレンドコード:{post.code}</p> */}
           </div>
           <Link to={`/about/${post.id}`} state={{test:"test"}}>
           <h3 className="ttl">{post.title}</h3>
